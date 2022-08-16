@@ -10,15 +10,16 @@ Author URI: https://pcivault.io
 License: MIT
 */
 
-function pcivault_shortcode( $atts = [], $content = null, $tag = '' ) {
+function pcivault_shortcode($atts = [], $content = null, $tag = '')
+{
     $args = array(
         'headers' => array(
-            'Authorization' => 'Basic ' . base64_encode( 'example' . ':' . 'example' )
+            'Authorization' => 'Basic ' . base64_encode('example' . ':' . 'example')
         )
     );
 
-    $response = wp_remote_post('https://api.pcivault.io/v1/capture?user='.'example'.'&passphrase='.'example', $args);
-    $body =  wp_remote_retrieve_body($response);
+    $response = wp_remote_post('https://api.pcivault.io/v1/capture?user=' . 'example' . '&passphrase=' . 'example', $args);
+    $body = wp_remote_retrieve_body($response);
     $parsed_body = json_decode($body, true);
 
     return '
@@ -29,8 +30,8 @@ function pcivault_shortcode( $atts = [], $content = null, $tag = '' ) {
 
     <script defer>
         window.pcd_form(document.getElementById("pcivault_pcd_form"), {
-            submit_secret: "'.$parsed_body["secret"].'",
-            submit_url: "'.$parsed_body["url"].'"
+            submit_secret: "' . $parsed_body["secret"] . '",
+            submit_url: "' . $parsed_body["url"] . '"
         })
     </script>
     ';
@@ -39,8 +40,9 @@ function pcivault_shortcode( $atts = [], $content = null, $tag = '' ) {
 /**
  * Central location to create all shortcodes.
  */
-function pcivault_shortcodes_init() {
-    add_shortcode( 'pcivault', 'pcivault_shortcode' );
+function pcivault_shortcodes_init()
+{
+    add_shortcode('pcivault', 'pcivault_shortcode');
 }
 
-add_action( 'init', 'pcivault_shortcodes_init' );
+add_action('init', 'pcivault_shortcodes_init');
