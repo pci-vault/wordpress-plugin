@@ -25,7 +25,7 @@ function pcivault_shortcode($atts = [], $content = null, $tag = '')
     $key = $options['pcivault_field_key'];
     $passphrase = $options['pcivault_field_passphrase'];
 
-    $response = wp_remote_post('https://api.pcivault.io/v1/capture?user=' . $key . '&passphrase=' . $passphrase, $args);
+    $response = wp_remote_post('https://api.pcivault.io/v1/capture?ttl=1h&user=' . $key . '&passphrase=' . $passphrase, $args);
     $body = wp_remote_retrieve_body($response);
     $parsed_body = json_decode($body, true);
 
