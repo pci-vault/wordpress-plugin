@@ -2,7 +2,6 @@
 
 /*
 Plugin Name: PCI Vault Forms
-Plugin URI: https://pcivault.io
 Description: Securely capture card data using PCI Vault, which is a vendor neutral PCI DSS compliant environment.
 Version: 1.0.0
 Author: PCI Vault
