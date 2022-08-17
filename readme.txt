@@ -1,5 +1,5 @@
 === PCI Vault Forms ===
-Contributors: (this should be a list of wordpress.org userid's)
+Contributors: pcivault
 Donate link: https://pcivault.io/
 Tags: pci, dss, pci-dss, credit-card, creditcard, tokenization
 Requires at least: 6.0.1
