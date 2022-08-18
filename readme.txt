@@ -17,9 +17,14 @@ Securely capture card data from your site using PCI Vault. PCI Vault is a vendor
 Data captured with this plugin will be sent to PCI Vault's DSS compliant database directly, and will not be present
 on your own server at all. This allows you to capture sensitive payment data without having a PCI DSS compliant server.
 
+= How it Works =
+
 The plugin comes with a short code that loads PCI Vault's own Payment Card Data(PCD) form, and makes all the necessary
 requests to the PCI Vault API in order to get the form working. You can read more on the API side of things [here]: https://docs.pcivault.io/developers/capturing-card-data/
 Take note that this includes 2 paid API requests: 1 when the form loads, and 1 when the data is being sent to PCI Vault.
+
+To use this plugin, add your authorisation details, and the user/passphrase for a key, in the PCI Vault Options menu.
+You can then load the capture form anywhere in your site by using the `pcivault_capture` shortcode.
 
 = PCI Vault =
 

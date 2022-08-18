@@ -9,7 +9,7 @@ Author URI: https://pcivault.io
 License: MIT
 */
 
-function pcivault_shortcode($atts = [], $content = null, $tag = '')
+function pcivault_capture_shortcode($atts = [], $content = null, $tag = '')
 {
     $options = get_option('pcivault_options');
     $user = $options['pcivault_field_user'];
@@ -28,19 +28,22 @@ function pcivault_shortcode($atts = [], $content = null, $tag = '')
     $body = wp_remote_retrieve_body($response);
     $parsed_body = json_decode($body, true);
 
-    return '
-    <link rel="stylesheet" href="https://api.pcivault.io/pcd/pcd_form.css" />
-    <script src="https://api.pcivault.io/pcd/pcd_form.js"></script>
-    
-    <div id="pcivault_pcd_form"></div>
+    wp_enqueue_style("pcivault_capture_style", "https://api.pcivault.io/pcd/pcd_form.css");
+    wp_enqueue_script("pcivault_capture_script", "https://api.pcivault.io/pcd/pcd_form.js");
 
-    <script defer>
-        window.pcd_form(document.getElementById("pcivault_pcd_form"), {
+    return '
+    <div id="pcivault_pcd_form"></div>
+    ' . wp_get_inline_script_tag(
+            '
+            window.pcd_form(document.getElementById("pcivault_pcd_form"), {
             submit_secret: "' . $parsed_body["secret"] . '",
             submit_url: "' . $parsed_body["url"] . '"
-        })
-    </script>
-    ';
+            })
+            ',
+            array(
+                "defer" => True,
+            )
+        );
 }
 
 function pcivault_settings_init()
@@ -157,7 +160,7 @@ function pcivault_options_page_html()
 
 function pcivault_shortcodes_init()
 {
-    add_shortcode('pcivault', 'pcivault_shortcode');
+    add_shortcode('pcivault_capture', 'pcivault_capture_shortcode');
 }
 
 add_action('init', 'pcivault_shortcodes_init');
