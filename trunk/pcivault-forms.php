@@ -29,19 +29,21 @@ function pcivault_capture_shortcode($atts = [], $content = null, $tag = '')
     $parsed_body = json_decode($body, true);
 
     wp_enqueue_style("pcivault_capture_style", "https://api.pcivault.io/pcd/pcd_form.css");
-    wp_enqueue_script("pcivault_capture_script", "https://api.pcivault.io/pcd/pcd_form.js");
+    wp_enqueue_script("pcivault_capture_script", "https://api.pcivault.io/pcd/pcd_form.js", array(), false, false);
 
     return '
     <div id="pcivault_pcd_form"></div>
     ' . wp_get_inline_script_tag(
             '
-            window.pcd_form(document.getElementById("pcivault_pcd_form"), {
-            submit_secret: "' . $parsed_body["secret"] . '",
-            submit_url: "' . $parsed_body["url"] . '"
+            window.addEventListener("load", function(){
+                window.pcd_form(document.getElementById("pcivault_pcd_form"), {
+                    submit_secret: "' . $parsed_body["secret"] . '",
+                    submit_url: "' . $parsed_body["url"] . '"
+                })
             })
             ',
             array(
-                "defer" => True,
+                "defer" => "defer",
             )
         );
 }

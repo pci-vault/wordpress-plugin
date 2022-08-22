@@ -2,10 +2,9 @@
 Contributors: pcivault
 Donate link: https://pcivault.io/
 Tags: pci, dss, pci-dss, credit-card, creditcard, tokenization
-Requires at least: 6.0.1
+Requires at least: 5.7.0
 Tested up to: 6.0.1
 Stable tag: 1.0.0
-Requires PHP: 7.4
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
