@@ -37,7 +37,7 @@ The attribute options are:
 - show_card: A true/false value on whether or not to show the card on the form.
 - disable_luhn: A true/false value on whether to disable validation on all form fields.
 - force_keypad: A true/false value on whether to force the user to use a randomised on-screen keypad for entering card numbers. This helps to protect you from key-loggers.
-- field_options: A configuration object for specifiying which of the form fields to show or validate.
+- field_options: A configuration object for specifying which of the form fields to show or validate.
 
 For more information on these fields, please check the documentation for PCI Vault's [Payment Card Data (PCD) form](https://api.pcivault.io/pcd/how-to-capture-and-tokenize-payment-card-data.html).
 
