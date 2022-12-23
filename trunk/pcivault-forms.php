@@ -11,6 +11,17 @@ License: MIT
 
 function pcivault_capture_shortcode($atts = [], $content = null, $tag = '')
 {
+    // normalize attribute keys, lowercase
+    $atts = array_change_key_case((array)$atts, CASE_LOWER);
+    var_dump($atts);
+
+    $atts = shortcode_atts(
+        array(
+            'success_callback' => '() => {}',
+            'error_callback' => '() => {}',
+        ), $atts, $tag
+    );
+
     $options = get_option('pcivault_options');
     $user = $options['pcivault_field_user'];
     $password = $options['pcivault_field_password'];
@@ -37,7 +48,9 @@ function pcivault_capture_shortcode($atts = [], $content = null, $tag = '')
         window.addEventListener("load", function(){
             window.pcd_form(document.getElementById("pcivault_pcd_form"), {
                 submit_secret: "' . $parsed_body["secret"] . '",
-                submit_url: "' . $parsed_body["url"] . '"
+                submit_url: "' . $parsed_body["url"] . '",
+                success_callback: ' . $atts['success_callback'] . ',
+                error_callback: ' . $atts['error_callback'] . '
             })
         })
     </script>';
