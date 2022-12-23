@@ -31,7 +31,6 @@ All valid short code attributes are imported directly into the javascript that r
 Every attribute must be a valid Javascript expression. We recommend to use function calls that return the values you want the attributes to have, this will grant extra flexibility and avoid issues with Wordpress's sanitisation.
 
 The attribute options are:
-
 * success_callback: A JS function to call if the card was successfully stored.
 * error_callback: A JS function to call if the card was not successfully stored.
 * extra_data: Extra data to store along with the card, must be a valid JS object. This is where using a JS function call really helps.
