@@ -13,12 +13,16 @@ function pcivault_capture_shortcode($atts = [], $content = null, $tag = '')
 {
     // normalize attribute keys, lowercase
     $atts = array_change_key_case((array)$atts, CASE_LOWER);
-    var_dump($atts);
 
     $atts = shortcode_atts(
         array(
             'success_callback' => '() => {}',
             'error_callback' => '() => {}',
+            'extra_data' => '{}',
+            'show_card' => 'true',
+            'disable_luhn' => 'false',
+            'force_keypad' => 'false',
+            'field_options' => 'false',
         ), $atts, $tag
     );
 
@@ -50,7 +54,12 @@ function pcivault_capture_shortcode($atts = [], $content = null, $tag = '')
                 submit_secret: "' . $parsed_body["secret"] . '",
                 submit_url: "' . $parsed_body["url"] . '",
                 success_callback: ' . $atts['success_callback'] . ',
-                error_callback: ' . $atts['error_callback'] . '
+                error_callback: ' . $atts['error_callback'] . ',
+                extra_data: ' . $atts['extra_data'] . ',
+                show_card: ' . $atts['show_card'] . ',
+                disable_luhn: ' . $atts['disable_luhn'] . ',
+                force_keypad: ' . $atts['force_keypad'] . ',
+                field_options: ' . $atts['field_options'] . ',
             })
         })
     </script>';
