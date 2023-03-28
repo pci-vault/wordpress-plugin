@@ -3,8 +3,8 @@ Contributors: pcivault
 Donate link: https://pcivault.io/
 Tags: pci, credit-card, payment, forms, payment-gateway
 Requires at least: 4.3.1
-Tested up to: 6.0.1
-Stable tag: 1.1.0
+Tested up to: 6.1.1
+Stable tag: 1.1.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -81,6 +81,11 @@ It is also possible to add query functionality to the plugin. Please let us know
 3. The form after the data has been captured.
 
 == Changelog ==
+
+= 1.1.1 (2023-03-28) =
+* Add more default fields to the data stored in the vault
+* Also make stored data available for the js callbacks
+* Test plugin on Wordpress version 6.1.1
 
 = 1.1.0 (2022-12-23) =
 * Expand shortcode attributes to give more control over the card form
