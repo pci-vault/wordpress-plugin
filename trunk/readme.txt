@@ -1,7 +1,7 @@
 === PCI Vault Forms ===
 Contributors: pcivault
 Donate link: https://pcivault.io/
-Tags: pci, dss, pci-dss, credit-card, creditcard, tokenization
+Tags: pci, credit-card, payment, forms, payment-gateway
 Requires at least: 4.3.1
 Tested up to: 6.0.1
 Stable tag: 1.1.0
